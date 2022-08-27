@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interractable
   - Water
   - UI
-  - 
-  - 
+  - World_Ground
+  - World_Wall
   - 
   - 
   - 

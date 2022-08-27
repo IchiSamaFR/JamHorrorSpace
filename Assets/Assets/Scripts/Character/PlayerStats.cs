@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
-
+    [Header("Inventory")]
+    public int InventorySize;
 }
