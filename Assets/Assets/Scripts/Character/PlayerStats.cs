@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
+    [Header("Range")]
+    public float InterractionRange = 4;
+
     [Header("Inventory")]
-    public int InventorySize;
+    public int InventorySize = 4;
 }

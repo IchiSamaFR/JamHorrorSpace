@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Player player;
     private PlayerStats playerStats;
-    private CharacterController characterController;
     private Camera cam;
+    [SerializeField] private Animator animator;
 
     private Vector3 moveDirection = Vector3.zero;
     private float speed = 0;
@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        characterController = GetComponent<CharacterController>();
         player = GetComponent<Player>();
         playerStats = GetComponent<PlayerStats>();
         cam = Camera.main;
@@ -41,7 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            selectedInteractableObject.Interact(player);
+            selectedInteractableObject?.Interact(player);
         }
     }
     private void CheckInterractionAble()
@@ -51,12 +50,15 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, interractableLayer))
         {
-            SelectInteractableObject(hit.transform.GetComponent<IInteractableObject>());
+            var heading = hit.point - transform.position;
+            var distance = heading.magnitude;
+            if (distance < playerStats.InterractionRange)
+            {
+                SelectInteractableObject(hit.transform.GetComponent<IInteractableObject>());
+                return;
+            }
         }
-        else
-        {
-            SelectInteractableObject(null);
-        }
+        SelectInteractableObject(null);
     }
     private void SelectInteractableObject(IInteractableObject newInteractableObject)
     {
@@ -102,22 +104,28 @@ public class PlayerController : MonoBehaviour
         moveDirection += new Vector3(cam.transform.right.x, 0, cam.transform.right.z) * Input.GetAxis("Horizontal");
         moveDirection += new Vector3(cam.transform.forward.x, 0, cam.transform.forward.z) * Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && moveDirection != new Vector3())
         {
+            animator.SetBool("IsRunning", true);
+            animator.SetBool("IsWalking", false);
             speed += playerStats.RunSpeed * playerStats.AccelerationMultiplier * Time.fixedDeltaTime;
             speed = Mathf.Clamp(speed, 0, playerStats.RunSpeed);
         }
         else if(moveDirection != new Vector3())
         {
+            animator.SetBool("IsRunning", false);
+            animator.SetBool("IsWalking", true);
             speed += playerStats.WalkSpeed * playerStats.AccelerationMultiplier * Time.fixedDeltaTime;
             speed = Mathf.Clamp(speed, 0, playerStats.WalkSpeed);
         }
         else
         {
+            animator.SetBool("IsRunning", false);
+            animator.SetBool("IsWalking", false);
             speed = 0;
         }
 
         moveDirection *= speed;
-        characterController.Move(moveDirection * Time.fixedDeltaTime);
+        transform.position += moveDirection * Time.fixedDeltaTime;
     }
 }

@@ -11,5 +11,6 @@ public class DataItem : ScriptableObject
     }
     public DataType Type;
     public string Name;
+    public Sprite Sprite;
     public GameObject Prefab;
 }
