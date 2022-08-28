@@ -101,8 +101,8 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
         moveDirection = new Vector3();
-        moveDirection += new Vector3(cam.transform.right.x, 0, cam.transform.right.z) * Input.GetAxis("Horizontal");
-        moveDirection += new Vector3(cam.transform.forward.x, 0, cam.transform.forward.z) * Input.GetAxis("Vertical");
+        moveDirection += new Vector3(transform.right.x, 0, transform.right.z) * Input.GetAxis("Horizontal");
+        moveDirection += new Vector3(transform.forward.x, 0, transform.forward.z) * Input.GetAxis("Vertical");
 
         if (Input.GetKey(KeyCode.LeftShift) && moveDirection != new Vector3())
         {
