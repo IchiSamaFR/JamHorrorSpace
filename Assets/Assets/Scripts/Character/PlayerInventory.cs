@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -25,11 +26,35 @@ public class PlayerInventory : MonoBehaviour
             return false;
         }
     }
-    public void DropItem(DataItem item)
+    public bool RemoveItem(DataItem item)
     {
         if (items.Contains(item))
         {
             items.Remove(item);
+            return true;
         }
+        return false;
+    }
+    public bool RemoveItem(DataItem.DataType dataType)
+    {
+        DataItem item = GetItemOf(dataType);
+        if (item != null)
+        {
+            items.Remove(item);
+            return true;
+        }
+        return false;
+    }
+    public bool HasItem(DataItem.DataType dataType)
+    {
+        return items.Any(item => item.Type == dataType);
+    }
+    private DataItem GetItemOf(DataItem.DataType dataType)
+    {
+        if (HasItem(dataType))
+        {
+            return items.First(item => item.Type == dataType);
+        }
+        return null;
     }
 }

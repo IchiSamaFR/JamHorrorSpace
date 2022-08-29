@@ -357,7 +357,7 @@ MonoBehaviour:
   WalkSpeed: 1.2
   RunSpeed: 2.8
   AccelerationTime: 0.25
-  InterractionRange: 1
+  InterractionRange: 1.4
   InventorySize: 4
 --- !u!114 &3906611538253917586
 MonoBehaviour:
