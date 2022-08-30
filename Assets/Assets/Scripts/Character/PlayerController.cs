@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
     private float speed = 0;
+    private bool isSneak;
 
     [SerializeField] private GameObject flashLight;
     [SerializeField] private LayerMask groundLayer;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         CheckInterraction();
+        ApplyAnimations();
     }
     private void FixedUpdate()
     {
@@ -98,30 +100,67 @@ public class PlayerController : MonoBehaviour
                 new Vector3(direction.x, direction.y, direction.z));
         }
     }
+    private void ApplyAnimations()
+    {
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            animator.SetBool("Right", true);
+            animator.SetBool("Left", false);
+        }
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            animator.SetBool("Right", false);
+            animator.SetBool("Left", true);
+        }
+        else
+        {
+            animator.SetBool("Right", false);
+            animator.SetBool("Left", false);
+        }
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            animator.SetBool("Forward", true);
+            animator.SetBool("Backward", false);
+        }
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            animator.SetBool("Forward", false);
+            animator.SetBool("Backward", true);
+        }
+        else
+        {
+            animator.SetBool("Forward", false);
+            animator.SetBool("Backward", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            isSneak = !isSneak;
+            animator.SetBool("IsStand", !isSneak);
+            animator.SetBool("IsSneak", isSneak);
+        }
+    }
     private void Movement()
     {
         moveDirection = new Vector3();
         moveDirection += new Vector3(transform.right.x, 0, transform.right.z) * Input.GetAxis("Horizontal");
         moveDirection += new Vector3(transform.forward.x, 0, transform.forward.z) * Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.LeftShift) && moveDirection != new Vector3())
+        if (moveDirection != new Vector3())
         {
-            animator.SetBool("IsRunning", true);
-            animator.SetBool("IsWalking", false);
-            speed += playerStats.RunSpeed * playerStats.AccelerationMultiplier * Time.fixedDeltaTime;
-            speed = Mathf.Clamp(speed, 0, playerStats.RunSpeed);
-        }
-        else if(moveDirection != new Vector3())
-        {
-            animator.SetBool("IsRunning", false);
-            animator.SetBool("IsWalking", true);
-            speed += playerStats.WalkSpeed * playerStats.AccelerationMultiplier * Time.fixedDeltaTime;
-            speed = Mathf.Clamp(speed, 0, playerStats.WalkSpeed);
+            if (isSneak)
+            {
+                speed += playerStats.SneakSpeed * playerStats.AccelerationMultiplier * Time.fixedDeltaTime;
+                speed = Mathf.Clamp(speed, 0, playerStats.SneakSpeed);
+            }
+            else
+            {
+                speed += playerStats.WalkSpeed * playerStats.AccelerationMultiplier * Time.fixedDeltaTime;
+                speed = Mathf.Clamp(speed, 0, playerStats.WalkSpeed);
+            }
         }
         else
         {
-            animator.SetBool("IsRunning", false);
-            animator.SetBool("IsWalking", false);
             speed = 0;
         }
 
