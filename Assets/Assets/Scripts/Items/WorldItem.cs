@@ -11,10 +11,9 @@ public class WorldItem : MonoBehaviour, IInteractableObject
 
     public bool IsInterractable { get; private set; }
 
-    private void Start()
-    {
-        textBox.text = item.Name;
+    private void Start() {
         panel.SetActive(false);
+        textBox.text = item.Name;
     }
 
     public void SetInterractable(bool able)
@@ -22,15 +21,12 @@ public class WorldItem : MonoBehaviour, IInteractableObject
         if(IsInterractable != able)
         {
             IsInterractable = able;
-            panel.SetActive(IsInterractable);
-        }
-    }
-    public void Interact(Player player)
-    {
-        if (player.PlayerInventory.AddItem(item))
-        {
-            Destroy(gameObject);
+            panel.SetActive(able);
         }
     }
 
+    public void Interact(Player player) {
+        player.PlayerInventory.AddItem(item);
+        Destroy(gameObject);
+    }
 }
