@@ -6,55 +6,62 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     private PlayerStats playerStats;
+    [SerializeField] private PlayerInventoryUI playerInventoryUi;
 
     public List<DataItem> items = new List<DataItem>();
+
+    private int maxItems = 3;
 
     private void Start()
     {
         playerStats = GetComponent<PlayerStats>();
     }
 
-    public bool AddItem(DataItem item)
+    public bool AddItem(DataItem i)
     {
-        if (items.Count < playerStats.InventorySize)
-        {
-            items.Add(item);
+        DataItem item = HasItem(i.Id);
+        if (item) {
+            item.Quantity++;
+            playerInventoryUi.Refresh(items);
             return true;
         }
-        else
-        {
+        if (items.Count >= maxItems) {
             return false;
         }
-    }
-    public bool RemoveItem(DataItem item)
-    {
-        if (items.Contains(item))
+        if (items.Count < playerStats.InventorySize)
         {
-            items.Remove(item);
+            items.Add(i.Clone());
+            playerInventoryUi.Refresh(items);
             return true;
         }
         return false;
     }
-    public bool RemoveItem(DataItem.DataType dataType)
+    public bool RemoveItem(string itemId)
     {
-        DataItem item = GetItemOf(dataType);
-        if (item != null)
-        {
-            items.Remove(item);
-            return true;
+        DataItem item = HasItem(itemId);
+        if (item) {
+            if (item.Quantity > 1) {
+                item.Quantity--;
+                playerInventoryUi.Refresh(items);
+                return true;
+            } else {
+                items.Remove(item);
+            }
         }
         return false;
     }
-    public bool HasItem(DataItem.DataType dataType)
+
+    public DataItem HasItem(string itemId)
     {
-        return items.Any(item => item.Type == dataType);
-    }
-    private DataItem GetItemOf(DataItem.DataType dataType)
-    {
-        if (HasItem(dataType))
-        {
-            return items.First(item => item.Type == dataType);
+        if (items.Any(i => i.Id == itemId)) {
+            return items.First(i => i.Id == itemId);
         }
         return null;
+    }
+
+    public void Drop() {
+        DataItem item = items.First();
+        Instantiate(item.Prefab);
+        RemoveItem(item.Id);
     }
 }

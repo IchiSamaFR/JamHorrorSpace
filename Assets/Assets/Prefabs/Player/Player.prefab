@@ -83,10 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412ba2d6fd51e2440a149a2ddc11814c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterController: {fileID: 0}
-  PlayerStats: {fileID: 0}
-  PlayerController: {fileID: 0}
-  PlayerInventory: {fileID: 0}
+  PlayerUI: {fileID: 0}
 --- !u!114 &2306194432714387326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4714786dedcf83541abd579c56ec81b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryUi: {fileID: 0}
   items: []
 --- !u!54 &2306194432714387323
 Rigidbody:
@@ -689,7 +687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593159854818176, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1595755098267292, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
       propertyPath: m_Layer
@@ -762,6 +760,10 @@ PrefabInstance:
     - target: {fileID: 1774906501016396, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774906501016396, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1779604030097912, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
       propertyPath: m_Layer

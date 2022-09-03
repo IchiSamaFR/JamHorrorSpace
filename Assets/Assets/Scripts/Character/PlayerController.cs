@@ -34,9 +34,22 @@ public class PlayerController : MonoBehaviour
     {
         Rotation();
         Movement();
-
-        CheckInterractionAble();
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.transform.GetComponent<WorldItem>()) {
+            selectedInteractableObject = other.transform.GetComponent<WorldItem>();
+            selectedInteractableObject.SetInterractable(true);
+        }
+    }
+    
+    private void OnTriggerExit(Collider other) {
+        if (other.transform.GetComponent<WorldItem>()) {
+            selectedInteractableObject.SetInterractable(false);
+            selectedInteractableObject = null;
+        }
+    }
+
 
     private void CheckInterraction()
     {
@@ -44,40 +57,12 @@ public class PlayerController : MonoBehaviour
         {
             selectedInteractableObject?.Interact(player);
         }
-    }
-    private void CheckInterractionAble()
-    {
-        Vector3 mouse = Input.mousePosition;
-        Ray castPoint = cam.ScreenPointToRay(mouse);
-        RaycastHit hit;
-        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, interractableLayer))
-        {
-            var heading = hit.point - transform.position;
-            var distance = heading.magnitude;
-            if (distance < playerStats.InterractionRange)
-            {
-                SelectInteractableObject(hit.transform.GetComponent<IInteractableObject>());
-                return;
-            }
-        }
-        SelectInteractableObject(null);
-    }
-    private void SelectInteractableObject(IInteractableObject newInteractableObject)
-    {
-        if (newInteractableObject != selectedInteractableObject)
-        {
-            if (!selectedInteractableObject?.Equals(null) ?? false)
-            {
-                selectedInteractableObject.SetInterractable(false);
-            }
-            if (!newInteractableObject?.Equals(null) ?? false)
-            {
-                newInteractableObject.SetInterractable(true);
-            }
 
-            selectedInteractableObject = newInteractableObject;
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            player.PlayerUI.Show();
         }
     }
+
     private void Rotation()
     {
         Vector3 mouse = Input.mousePosition;

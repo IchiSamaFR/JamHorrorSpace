@@ -8,16 +8,20 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    public CharacterController CharacterController;
-    public PlayerStats PlayerStats;
-    public PlayerController PlayerController;
-    public PlayerInventory PlayerInventory;
+    [System.NonSerialized] public PlayerStats PlayerStats;
+    [System.NonSerialized] public PlayerController PlayerController;
+    [System.NonSerialized] public PlayerInventory PlayerInventory;
+    public PlayerUI PlayerUI;
 
     private void Start()
     {
-        CharacterController = GetComponent<CharacterController>();
         PlayerStats = GetComponent<PlayerStats>();
         PlayerController = GetComponent<PlayerController>();
         PlayerInventory = GetComponent<PlayerInventory>();
+
+        if (!PlayerUI)
+        {
+            Debug.LogError("Menu has not been assigned in Player.");
+        }
     }
 }
