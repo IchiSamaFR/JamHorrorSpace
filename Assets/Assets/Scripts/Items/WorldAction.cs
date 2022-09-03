@@ -23,6 +23,7 @@ public class WorldAction : MonoBehaviour, IInteractableObject
     private bool used;
 
     public bool IsInterractable { get; private set; }
+    public bool DestroyOnInterract { get; private set; }
 
     private void Start()
     {

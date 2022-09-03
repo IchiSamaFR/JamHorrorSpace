@@ -11,6 +11,8 @@ public class WorldItem : MonoBehaviour, IInteractableObject
 
     public bool IsInterractable { get; private set; }
 
+    public bool DestroyOnInterract { get; } = true;
+
     private void Start() {
         panel.SetActive(false);
         textBox.text = item.Name;
