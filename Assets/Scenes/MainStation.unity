@@ -59587,10 +59587,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.2139891
       objectReference: {fileID: 0}
-    - target: {fileID: 4813089806316896185, guid: e83be32237bb1e0488dd3fa2e0cf479a, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: a99b6e7ae7a38ea40992e60299c9b69b, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e83be32237bb1e0488dd3fa2e0cf479a, type: 3}

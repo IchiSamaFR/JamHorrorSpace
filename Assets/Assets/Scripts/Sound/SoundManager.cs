@@ -52,12 +52,21 @@ public class SoundManager : MonoBehaviour
     }
     public void CreateSFXAudio(AudioClip clip, Vector3 position, float mutliplier = 1)
     {
-        GameObject gameObject = new GameObject("SFX");
-        AudioSource audio = gameObject.AddComponent<AudioSource>();
-        audio.clip = clip;
-        audio.Play();
-        Sound sound = gameObject.AddComponent<Sound>();
+        Sound sound = InstantiateSound(clip, position);
         sound.SetVolume(VolumeSFX);
         sound.SetMultiplier(mutliplier);
+        sound.Play();
+    }
+
+    public Sound InstantiateSound(AudioClip clip, Vector3 position)
+    {
+        GameObject gameObject = new GameObject("SFX");
+        gameObject.transform.position = position;
+        AudioSource audio = gameObject.AddComponent<AudioSource>();
+        audio.minDistance = 0;
+        audio.maxDistance = 10;
+        audio.spatialBlend = 0.8f;
+        audio.clip = clip;
+        return gameObject.AddComponent<Sound>();
     }
 }

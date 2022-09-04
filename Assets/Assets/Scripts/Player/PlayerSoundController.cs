@@ -12,20 +12,21 @@ public class PlayerSoundController : MonoBehaviour
     [SerializeField] private List<AudioClip> footSteps;
     [SerializeField] private List<AudioClip> actions;
 
-    public void SetBreathSound(int amount)
+    public void SetBreathSound(float percent)
     {
-        amount = Mathf.Clamp(amount, 0, 100);
-        breath.SetPitch(1 + 2 * (amount / 100));
+        percent = Mathf.Clamp(percent, 0, 1);
+        breath.SetPitch(1 + 2 * percent);
+        breath.SetMultiplier(0.3f + 0.7f * percent);
     }
     public void PlayFootStep()
     {
         AudioClip clip = footSteps[Random.Range(0, footSteps.Count)];
-        SoundManager.Instance.CreateSFXAudio(clip, transform.position, 0.3f);
+        SoundManager.Instance.CreateSFXAudio(clip, transform.position, 0.6f);
     }
     public void PlaySneakFootStep()
     {
         AudioClip clip = footSteps[Random.Range(0, footSteps.Count)];
-        SoundManager.Instance.CreateSFXAudio(clip, transform.position, 0.15f);
+        SoundManager.Instance.CreateSFXAudio(clip, transform.position, 0.3f);
     }
     public void PlayAction()
     {
