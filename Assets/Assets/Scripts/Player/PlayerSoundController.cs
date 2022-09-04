@@ -21,12 +21,12 @@ public class PlayerSoundController : MonoBehaviour
     public void PlayFootStep()
     {
         AudioClip clip = footSteps[Random.Range(0, footSteps.Count)];
-        SoundManager.Instance.CreateSFXAudio(clip, transform.position, 0.6f);
+        SoundManager.Instance.CreateSFXAudio(clip, transform.position, 1f);
     }
     public void PlaySneakFootStep()
     {
         AudioClip clip = footSteps[Random.Range(0, footSteps.Count)];
-        SoundManager.Instance.CreateSFXAudio(clip, transform.position, 0.3f);
+        SoundManager.Instance.CreateSFXAudio(clip, transform.position, 0.5f);
     }
     public void PlayAction()
     {
