@@ -12,8 +12,7 @@ public class WorldAction : MonoBehaviour, IInteractableObject
     [SerializeField] private TextMeshProUGUI textBox;
 
     [Header("Items")]
-    [SerializeField] private List<DataItem> itemConsumed;
-    [SerializeField] private List<DataItem> itemNeeded;
+    [SerializeField] private List<string> itemConsumed;
 
     [Header("Actions")]
     [SerializeField] private GameObject objectBefore;
@@ -43,6 +42,14 @@ public class WorldAction : MonoBehaviour, IInteractableObject
     }
 
     public void Interact(Player player) {
-        throw new System.NotImplementedException();
+        if(!itemConsumed.Any(item => !player.PlayerInventory.HasItem(item)))
+        {
+            itemConsumed.ForEach(item => player.PlayerInventory.RemoveItem(item));
+            used = true;
+
+            SetInterractable(false);
+            objectBefore?.SetActive(false);
+            objectAppeared?.SetActive(true);
+        }
     }
 }

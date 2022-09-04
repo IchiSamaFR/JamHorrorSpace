@@ -4,6 +4,32 @@ using UnityEngine;
 
 public class PlayerSoundController : MonoBehaviour
 {
+    private Player player;
+    private PlayerStats playerStats;
+
+    public Player Player
+    {
+        get
+        {
+            if (player == null)
+            {
+                player = GetComponent<Player>();
+            }
+            return player;
+        }
+    }
+    public PlayerStats PlayerStats
+    {
+        get
+        {
+            if(playerStats == null)
+            {
+                playerStats = Player.PlayerStats;
+            }
+            return playerStats;
+        }
+    }
+
     [Header("Loop sounds")]
     [SerializeField] private Sound ambiant;
     [SerializeField] private Sound breath;
@@ -12,11 +38,13 @@ public class PlayerSoundController : MonoBehaviour
     [SerializeField] private List<AudioClip> footSteps;
     [SerializeField] private List<AudioClip> actions;
 
+
     public void SetBreathSound(float percent)
     {
         percent = Mathf.Clamp(percent, 0, 1);
-        breath.SetPitch(1 + 2 * percent);
-        breath.SetMultiplier(0.3f + 0.7f * percent);
+        breath.SetPitch(1 + PlayerStats.MaxPitchModifier * percent);
+        breath.SetMultiplier((1 - PlayerStats.MaxVolumeModifier) +
+            PlayerStats.MaxVolumeModifier * percent);
     }
     public void PlayFootStep()
     {

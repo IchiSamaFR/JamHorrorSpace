@@ -102,6 +102,13 @@ MonoBehaviour:
   RunSpeed: 2.8
   AccelerationTime: 0.15
   InventorySize: 3
+  MaxPitchModifier: 0.5
+  MaxVolumeModifier: 0.7
+  TimeToPanic: 3
+  TimeToPanicDown: 6
+  ConeRadius: 30
+  RangeRadius: 7
+  RangeInstantRadius: 2
 --- !u!114 &2306194432714387321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,10 +122,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2401473893085088361}
+  mainCamera: {fileID: 0}
+  shakingCamera: {fileID: 0}
   flashLight: {fileID: 2306194433214304069}
-  groundLayer:
+  creatureRaycast:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 767
+  flashLightFocus:
+    serializedVersion: 2
+    m_Bits: 585
   interractableLayer:
     serializedVersion: 2
     m_Bits: 8
