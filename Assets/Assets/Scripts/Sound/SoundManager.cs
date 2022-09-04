@@ -50,13 +50,14 @@ public class SoundManager : MonoBehaviour
                 break;
         }
     }
-    public void CreateSFXAudio(AudioClip clip, Vector3 position)
+    public void CreateSFXAudio(AudioClip clip, Vector3 position, float mutliplier = 1)
     {
         GameObject gameObject = new GameObject("SFX");
         AudioSource audio = gameObject.AddComponent<AudioSource>();
         audio.clip = clip;
         audio.Play();
         Sound sound = gameObject.AddComponent<Sound>();
-        sound.Volume = VolumeSFX;
+        sound.SetVolume(VolumeSFX);
+        sound.SetMultiplier(mutliplier);
     }
 }

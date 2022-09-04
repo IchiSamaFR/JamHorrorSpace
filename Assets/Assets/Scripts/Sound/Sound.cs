@@ -26,15 +26,35 @@ public class Sound : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void Play()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+    }
+    public void Stop()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+    }
     public void SetVolume(float volume)
     {
-        Volume = volume;
-        audioSource.volume = Volume * Multiplier;
+        if (Volume != volume)
+        {
+            Volume = volume;
+            audioSource.volume = Volume * Multiplier;
+        }
     }
     public void SetMultiplier(float multiplier)
     {
-        Multiplier = multiplier;
-        audioSource.volume = Volume * Multiplier;
+        if(Multiplier != multiplier)
+        {
+            Multiplier = multiplier;
+            audioSource.volume = Volume * Multiplier;
+        }
     }
     public void SetPitch(float pitch)
     {

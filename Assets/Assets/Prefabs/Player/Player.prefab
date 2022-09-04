@@ -101,8 +101,7 @@ MonoBehaviour:
   SneakSpeed: 1.4
   RunSpeed: 2.8
   AccelerationTime: 0.15
-  InterractionRange: 4
-  InventorySize: 4
+  InventorySize: 3
 --- !u!114 &2306194432714387321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +180,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ambiant: {fileID: 0}
   breath: {fileID: 0}
-  footSteps: []
+  footSteps:
+  - {fileID: 8300000, guid: c3c3c6d3eff18e940bea4e32f94ae2cf, type: 3}
+  - {fileID: 8300000, guid: f4d300e3c45f42546b061efcb68cd966, type: 3}
+  - {fileID: 8300000, guid: 1dff755a5d34cb4499f944af748b98fb, type: 3}
+  - {fileID: 8300000, guid: f8c1303f468802945984948664fd13c7, type: 3}
   actions:
   - {fileID: 8300000, guid: ad11d55a41d8d244caf8b363a291d199, type: 3}
   - {fileID: 8300000, guid: 5eb7e77905e308544a230b14c71e1581, type: 3}
@@ -921,6 +924,24 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 2306194432640736206}
   m_SourcePrefab: {fileID: 100100000, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
+--- !u!1 &2306597732332353293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1004905332525254, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
+  m_PrefabInstance: {fileID: 2306194433806499787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5308455652222003183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306597732332353293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c440ab16e416249bc2f0cc89e97ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2306194432714387327}
 --- !u!4 &2310137377370426193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4079372461978778, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
