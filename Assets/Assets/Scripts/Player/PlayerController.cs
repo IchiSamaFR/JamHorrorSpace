@@ -47,13 +47,13 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.transform.GetComponent<WorldItem>()) {
-            selectedInteractableObject = other.transform.GetComponent<WorldItem>();
+        if (other.transform.GetComponentsInChildren<MonoBehaviour>().Any(comp => comp is IInteractableObject)) {
+            selectedInteractableObject = other.transform.GetComponentsInChildren<MonoBehaviour>().First(comp => comp is IInteractableObject) as IInteractableObject;
             selectedInteractableObject.SetInterractable(true);
         }
     }
     private void OnTriggerExit(Collider other) {
-        if (other.transform.GetComponent<WorldItem>()) {
+        if (other.transform.GetComponentsInChildren<MonoBehaviour>().Any(comp => comp is IInteractableObject)) {
             selectedInteractableObject.SetInterractable(false);
             selectedInteractableObject = null;
         }
