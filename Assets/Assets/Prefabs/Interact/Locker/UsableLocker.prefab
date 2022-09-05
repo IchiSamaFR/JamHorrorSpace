@@ -114,8 +114,9 @@ MonoBehaviour:
   useMultipleTime: 0
   objectBefore: {fileID: 3614815962618452778}
   objectAppeared: {fileID: 1740163887315072244}
-  audioUse: {fileID: 8300000, guid: 4b458ef327b7d5a4c9132f091d2779f2, type: 3}
-  audioUnUse: {fileID: 8300000, guid: ea03f8e059bfb4f41b84bace57049e88, type: 3}
+  audioUse: {fileID: 8300000, guid: 87485baa9c831b946bd0ab31c0c782c5, type: 3}
+  audioUnUse: {fileID: 8300000, guid: 331eccee4bbf91847add5318b7801920, type: 3}
+  active: 0
   ImIn: 0
 --- !u!1 &3614815962618452778
 GameObject:
