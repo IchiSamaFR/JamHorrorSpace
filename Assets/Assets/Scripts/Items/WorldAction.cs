@@ -13,13 +13,15 @@ public class WorldAction : MonoBehaviour, IInteractableObject
 
     [Header("Items")]
     [SerializeField] private List<string> itemConsumed;
+    [SerializeField] private bool useMultipleTime;
 
     [Header("Actions")]
     [SerializeField] private GameObject objectBefore;
     [SerializeField] private GameObject objectAppeared;
+    [SerializeField] private AudioClip audioUse;
+    [SerializeField] private AudioClip audioUnUse;
 
-
-    private bool used;
+    private bool active;
 
     public bool IsInterractable { get; private set; }
     public bool DestroyOnInterract { get; private set; }
@@ -34,7 +36,7 @@ public class WorldAction : MonoBehaviour, IInteractableObject
 
     public void SetInterractable(bool able)
     {
-        if (IsInterractable != able && !used)
+        if (IsInterractable != able && !active && !useMultipleTime)
         {
             IsInterractable = able;
             panel.SetActive(IsInterractable);
@@ -44,12 +46,15 @@ public class WorldAction : MonoBehaviour, IInteractableObject
     public void Interact(Player player) {
         if(!itemConsumed.Any(item => !player.PlayerInventory.HasItem(item)))
         {
+            if (!useMultipleTime)
+            {
+                active = !active;
+                SetInterractable(false);
+            }
             itemConsumed.ForEach(item => player.PlayerInventory.RemoveItem(item));
-            used = true;
 
-            SetInterractable(false);
-            objectBefore?.SetActive(false);
-            objectAppeared?.SetActive(true);
+            objectBefore?.SetActive(active);
+            objectAppeared?.SetActive(!active);
         }
     }
 }

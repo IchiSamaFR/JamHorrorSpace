@@ -66,7 +66,8 @@ public class PlayerController : MonoBehaviour
         var direction = heading / distance;
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), direction, out hit, playerStats.RangeRadius, creatureRaycast))
+        if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), direction, out hit, playerStats.RangeRadius, creatureRaycast)
+            && hit.transform.GetComponent<Creature>())
         {
             if(hit.distance <= playerStats.RangeInstantRadius)
             {
@@ -75,8 +76,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Quaternion rotation = Quaternion.LookRotation(direction, transform.forward);
-                var y = rotation.eulerAngles.y < 180 ? rotation.eulerAngles.y + 360 : rotation.eulerAngles.y;
+                Vector3 rotation = Quaternion.LookRotation(heading, transform.forward).eulerAngles;
+                var y = rotation.y < 180 ? rotation.y + 360 : rotation.y;
                 var charY = transform.rotation.eulerAngles.y < 180 ? transform.rotation.eulerAngles.y + 360 : transform.rotation.eulerAngles.y;
 
                 if (charY + (playerStats.ConeRadius / 2) >= y && y >= charY - (playerStats.ConeRadius / 2))
