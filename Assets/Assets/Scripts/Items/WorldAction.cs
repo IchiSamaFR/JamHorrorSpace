@@ -28,6 +28,10 @@ public class WorldAction : MonoBehaviour, IInteractableObject
 
     private void Start()
     {
+        Init();
+    }
+
+    public void Init() {
         textBox.text = title;
         panel.SetActive(false);
         objectBefore?.SetActive(true);
@@ -44,28 +48,18 @@ public class WorldAction : MonoBehaviour, IInteractableObject
     }
 
     public virtual void Interact(Player player) {
-        print("Interact");
         active = !active;
-        if (!itemConsumed.Any(item => !player.PlayerInventory.HasItem(item)))
-        {
-            active = !active;
-            if (!useMultipleTime)
-            {
-                SetInterractable(false);
-            }
-            itemConsumed.ForEach(item => player.PlayerInventory.RemoveItem(item));
 
-            objectBefore?.SetActive(active);
-            objectAppeared?.SetActive(!active);
-        }
+        objectBefore?.SetActive(!active);
+        objectAppeared?.SetActive(active);
 
         if (active) {
             if (audioUse) {
-                SoundManager.Instance.InstantiateSound(audioUse, transform.position);
+                SoundManager.Instance.InstantiateSound(audioUse, transform.position).Play();
             }
         } else {
             if (audioUnUse) {
-                SoundManager.Instance.InstantiateSound(audioUnUse, transform.position);
+                SoundManager.Instance.InstantiateSound(audioUnUse, transform.position).Play();
             }
         }
     }
