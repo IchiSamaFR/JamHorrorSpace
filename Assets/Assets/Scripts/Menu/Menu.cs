@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
@@ -13,15 +11,11 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject OptionsMenu;
 
-    // Start is called before the first frame update
     void Start() {
+        Time.timeScale = 1;
+        CineCamMain.GetCinemachineComponent<CinemachineTrackedDolly>().m_AutoDolly.m_Enabled = true;
         OptionsMenu.SetActive(false);
         MainMenu.SetActive(true);
-    }
-
-    // Update is called once per frame
-    void Update() {
-
     }
 
     public void OnExit() {
@@ -52,6 +46,5 @@ public class Menu : MonoBehaviour
         CineCamOptions.Priority = 0;
 
         CineCamOptionsReverse.GetCinemachineComponent<CinemachineTrackedDolly>().m_AutoDolly.m_Enabled = true;
-
     }
 }
