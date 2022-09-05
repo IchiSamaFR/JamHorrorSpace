@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
 
     public float VolumeSFX = 1;
-    public float VolumeAmbiant = 1;
+    public float VolumeAmbient = 1;
 
     private List<Sound> sfxList = new List<Sound>();
     private List<Sound> ambientList = new List<Sound>();
@@ -33,7 +33,7 @@ public class SoundManager : MonoBehaviour
                 break;
             case SoundType.ambient:
                 ambientList.Add(sound);
-                sound.SetVolume(VolumeAmbiant);
+                sound.SetVolume(VolumeAmbient);
                 break;
         }
     }
@@ -57,6 +57,18 @@ public class SoundManager : MonoBehaviour
         sound.SetMultiplier(mutliplier);
         sound.Play();
     }
+    public void RefreshValues()
+    {
+        foreach (var sfx in sfxList)
+        {
+            sfx.SetVolume(VolumeSFX);
+        }
+        foreach (var ambient in ambientList)
+        {
+            ambient.SetVolume(VolumeAmbient);
+        }
+    }
+
 
     public Sound InstantiateSound(AudioClip clip, Vector3 position)
     {

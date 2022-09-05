@@ -29,6 +29,7 @@ public class WorldItem : MonoBehaviour, IInteractableObject
 
     public void Interact(Player player) {
         player.PlayerInventory.AddItem(item);
+        player.PlayerSoundController.PlayAction();
         Destroy(gameObject);
     }
 }

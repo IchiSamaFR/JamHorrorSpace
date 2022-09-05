@@ -57,5 +57,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdb2d1f8aa8e9d40bac74118b18c7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VolumeSFX: 0.1
-  VolumeAmbiant: 0.1
+  VolumeSFX: 0.5
+  VolumeAmbient: 0.5

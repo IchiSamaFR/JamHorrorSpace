@@ -105,7 +105,6 @@ public class PlayerController : MonoBehaviour
             if (selectedInteractableObject != null)
             {
                 selectedInteractableObject.Interact(player);
-                player.PlayerSoundController.PlayAction();
                 if (selectedInteractableObject.DestroyOnInterract)
                 {
                     selectedInteractableObject = null;
