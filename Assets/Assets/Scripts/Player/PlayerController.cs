@@ -76,11 +76,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Vector3 rotation = Quaternion.LookRotation(heading, transform.forward).eulerAngles;
-                var y = rotation.y < 180 ? rotation.y + 360 : rotation.y;
-                var charY = transform.rotation.eulerAngles.y < 180 ? transform.rotation.eulerAngles.y + 360 : transform.rotation.eulerAngles.y;
-
-                if (charY + (playerStats.ConeRadius / 2) >= y && y >= charY - (playerStats.ConeRadius / 2))
+                if (Geometry.CheckAngle(transform.rotation.eulerAngles, Quaternion.LookRotation(heading, transform.forward).eulerAngles, 30))
                 {
                     shakingCamera.Priority = 11;
                     shake = shake >= 1 ? 1 : shake + Time.deltaTime * 1 / playerStats.TimeToPanic;
