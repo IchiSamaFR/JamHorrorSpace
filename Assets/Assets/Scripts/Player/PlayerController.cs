@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
     private bool isSneak;
     private bool isFlashActive = true;
     private float shake;
+    private bool canMove = true;
 
+    [SerializeField] private GameObject model;
     [SerializeField] private GameObject flashLight;
     [SerializeField] private LayerMask creatureRaycast;
     [SerializeField] private LayerMask flashLightFocus;
@@ -40,10 +42,26 @@ public class PlayerController : MonoBehaviour
         CheckInterraction();
         ApplyAnimations();
     }
+
+    public void HidePlayer() {
+        model.SetActive(false);
+    }
+    public void ShowPlayer() {
+        model.SetActive(true);
+    }
+
     private void FixedUpdate()
     {
         Rotation();
         Movement();
+    }
+
+    public void StopMovement() {
+        canMove = false;
+    }
+
+    public void ResumeMovement() {
+        canMove = true;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -183,6 +201,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Movement()
     {
+        if (!canMove) {
+            return;
+        }
         moveDirection = new Vector3();
         moveDirection += new Vector3(transform.right.x, 0, transform.right.z) * Input.GetAxis("Horizontal");
         moveDirection += new Vector3(transform.forward.x, 0, transform.forward.z) * Input.GetAxis("Vertical");

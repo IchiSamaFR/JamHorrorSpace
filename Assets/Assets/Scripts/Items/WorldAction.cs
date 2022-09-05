@@ -7,21 +7,21 @@ using UnityEngine;
 public class WorldAction : MonoBehaviour, IInteractableObject
 {
     [Header("UI")]
-    [SerializeField] private string title;
-    [SerializeField] private GameObject panel;
-    [SerializeField] private TextMeshProUGUI textBox;
+    [SerializeField] protected string title;
+    [SerializeField] protected GameObject panel;
+    [SerializeField] protected TextMeshProUGUI textBox;
 
     [Header("Items")]
-    [SerializeField] private List<string> itemConsumed;
-    [SerializeField] private bool useMultipleTime;
+    [SerializeField] protected List<string> itemConsumed;
+    [SerializeField] protected bool useMultipleTime;
 
     [Header("Actions")]
-    [SerializeField] private GameObject objectBefore;
-    [SerializeField] private GameObject objectAppeared;
-    [SerializeField] private AudioClip audioUse;
-    [SerializeField] private AudioClip audioUnUse;
+    [SerializeField] protected GameObject objectBefore;
+    [SerializeField] protected GameObject objectAppeared;
+    [SerializeField] protected AudioClip audioUse;
+    [SerializeField] protected AudioClip audioUnUse;
 
-    private bool active;
+    [SerializeField] private bool active;
 
     public bool IsInterractable { get; private set; }
     public bool DestroyOnInterract { get; private set; }
@@ -43,8 +43,10 @@ public class WorldAction : MonoBehaviour, IInteractableObject
         }
     }
 
-    public void Interact(Player player) {
-        if(!itemConsumed.Any(item => !player.PlayerInventory.HasItem(item)))
+    public virtual void Interact(Player player) {
+        print("Interact");
+        active = !active;
+        if (!itemConsumed.Any(item => !player.PlayerInventory.HasItem(item)))
         {
             active = !active;
             if (!useMultipleTime)
@@ -55,20 +57,15 @@ public class WorldAction : MonoBehaviour, IInteractableObject
 
             objectBefore?.SetActive(active);
             objectAppeared?.SetActive(!active);
+        }
 
-            if (active)
-            {
-                if (audioUse)
-                {
-                    SoundManager.Instance.InstantiateSound(audioUse, transform.position);
-                }
+        if (active) {
+            if (audioUse) {
+                SoundManager.Instance.InstantiateSound(audioUse, transform.position);
             }
-            else
-            {
-                if (audioUnUse)
-                {
-                    SoundManager.Instance.InstantiateSound(audioUnUse, transform.position);
-                }
+        } else {
+            if (audioUnUse) {
+                SoundManager.Instance.InstantiateSound(audioUnUse, transform.position);
             }
         }
     }

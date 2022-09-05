@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932791932781792414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.85132, y: -16.463629, z: -8.670523}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -62,7 +62,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.8882681, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151440093524803612}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.85132, y: -16.463629, z: -8.670523}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -179,7 +179,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.8882681, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -310,7 +310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151440094547732871}
   m_LocalRotation: {x: 0.51661545, y: -0.31726214, z: 0.2139891, w: 0.7659386}
-  m_LocalPosition: {x: -2.0033417, y: 5.128769, z: 20.177853}
+  m_LocalPosition: {x: 2, y: 7, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -820,6 +820,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2306194432714387321, guid: cfedccf2f4c137347a19dd60d1aa7b0a, type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 1151001064471073568}
+    - target: {fileID: 2306194432714387321, guid: cfedccf2f4c137347a19dd60d1aa7b0a, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1151440093524803610}
@@ -885,6 +889,11 @@ PrefabInstance:
 --- !u!4 &1147158541063019772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2310352834289006801, guid: cfedccf2f4c137347a19dd60d1aa7b0a, type: 3}
+  m_PrefabInstance: {fileID: 3457501398374097965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1151001064471073568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2306597732332353293, guid: cfedccf2f4c137347a19dd60d1aa7b0a, type: 3}
   m_PrefabInstance: {fileID: 3457501398374097965}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1151440093822421841 stripped
