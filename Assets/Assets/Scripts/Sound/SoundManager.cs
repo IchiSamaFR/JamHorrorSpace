@@ -22,6 +22,29 @@ public class SoundManager : MonoBehaviour
         Instance = this;
     }
 
+    public void Stop()
+    {
+        foreach (var sfx in sfxList)
+        {
+            sfx?.SetVolume(0);
+        }
+        foreach (var ambient in ambientList)
+        {
+            ambient?.SetVolume(0);
+        }
+    }
+    public void Play()
+    {
+        foreach (var sfx in sfxList)
+        {
+            sfx?.SetVolume(VolumeSFX);
+        }
+        foreach (var ambient in ambientList)
+        {
+            ambient?.SetVolume(VolumeAmbient);
+        }
+    }
+
     public void Subscribe(Sound sound)
     {
         switch (sound.Type)

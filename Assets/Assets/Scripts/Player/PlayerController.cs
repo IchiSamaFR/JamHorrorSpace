@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool canMove = true;
 
     [SerializeField] private GameObject model;
+    [SerializeField] private GameObject flashLightModel;
     [SerializeField] private GameObject flashLight;
     [SerializeField] private LayerMask creatureRaycast;
     [SerializeField] private LayerMask flashLightFocus;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Player>();
         playerStats = GetComponent<PlayerStats>();
         cam = Camera.main;
+        flashLightModel.SetActive(false);
     }
     private void Update()
     {
@@ -228,5 +230,10 @@ public class PlayerController : MonoBehaviour
 
         moveDirection *= speed;
         transform.position += moveDirection * Time.fixedDeltaTime;
+    }
+
+    public void GetTorch()
+    {
+        flashLightModel.SetActive(true);
     }
 }

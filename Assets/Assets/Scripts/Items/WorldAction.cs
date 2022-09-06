@@ -40,14 +40,23 @@ public class WorldAction : MonoBehaviour, IInteractableObject
 
     public void SetInterractable(bool able)
     {
-        if (IsInterractable != able && !active && !useMultipleTime)
+        if (IsInterractable != able)
         {
+            if(able && active && !useMultipleTime)
+            {
+                return;
+            }
             IsInterractable = able;
             panel.SetActive(IsInterractable);
         }
     }
 
     public virtual void Interact(Player player) {
+        if (active && !useMultipleTime)
+        {
+            return;
+        }
+
         active = !active;
 
         objectBefore?.SetActive(!active);
@@ -56,6 +65,10 @@ public class WorldAction : MonoBehaviour, IInteractableObject
         if (active) {
             if (audioUse) {
                 SoundManager.Instance.InstantiateSound(audioUse, transform.position).Play();
+            }
+            if (!useMultipleTime)
+            {
+                SetInterractable(false);
             }
         } else {
             if (audioUnUse) {

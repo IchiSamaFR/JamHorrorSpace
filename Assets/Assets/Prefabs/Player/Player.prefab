@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917f0bc309a25e549b43cb77e28693b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 2
+  WalkSpeed: 2.2
   SneakSpeed: 1.4
   RunSpeed: 2.8
   AccelerationTime: 0.15
@@ -124,6 +124,8 @@ MonoBehaviour:
   animator: {fileID: 2401473893085088361}
   mainCamera: {fileID: 0}
   shakingCamera: {fileID: 0}
+  model: {fileID: 0}
+  flashLightModel: {fileID: 2306194432640736201}
   flashLight: {fileID: 2306194433214304069}
   creatureRaycast:
     serializedVersion: 2
@@ -342,7 +344,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 1.8
+  m_Range: 1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

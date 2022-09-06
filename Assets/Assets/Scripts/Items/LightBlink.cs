@@ -48,7 +48,6 @@ public class LightBlink : MonoBehaviour
         IsEnable = enable;
         if (!IsEnable)
         {
-            print("ee");
             Active(false);
         }
         else

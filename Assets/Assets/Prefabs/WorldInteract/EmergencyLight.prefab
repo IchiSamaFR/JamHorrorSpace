@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6702752846127602673}
   - component: {fileID: 7422478051433588015}
   m_Layer: 0
-  m_Name: ElectricalLight
+  m_Name: EmergencyLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightModel: {fileID: 4799422581426323929}
-  LinkedGroup: electrical
+  LinkedGroup: emergency
   MinBeforeBlink: 0.1
   MaxBeforeBlink: 0.5
   MinBlinkDuration: 3
@@ -96,7 +96,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.07075471, b: 0.07075471, a: 1}
   m_Intensity: 3
   m_Range: 5
   m_SpotAngle: 70

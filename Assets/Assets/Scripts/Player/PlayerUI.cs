@@ -22,10 +22,19 @@ public class PlayerUI : MonoBehaviour
         menu.SetActive(isOpen);
 
         Time.timeScale = isOpen ? 0 : 1;
+        if (isOpen)
+        {
+            SoundManager.Instance.Stop();
+        }
+        else
+        {
+            SoundManager.Instance.Play();
+        }
     }
     public void Resume() {
         menu.SetActive(false);
         Time.timeScale = 1;
+        SoundManager.Instance.Play();
     }
 
     public void ExitToMainMenu()
