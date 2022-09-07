@@ -34,6 +34,7 @@ public class TorchItem : MonoBehaviour, IInteractableObject
     public void Interact(Player player)
     {
         player.PlayerController.GetTorch();
+        SceneGameManager.Instance.GetTorch();
         Destroy(gameObject);
     }
 }

@@ -5,19 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class ElectricalItem : WorldAction
+public class ElectricalDoor : WorldAction
 {
-    [Header("EmergencyItem")]
-    [SerializeField] private string lightsId;
     private void Start()
     {
         Init();
     }
-
     public override void Interact(Player player)
     {
-        base.Interact(player);
-        LightController.Instance.Show(lightsId);
-        SceneGameManager.Instance.UseElectrical();
+        if (SceneGameManager.Instance.IsElectrical)
+        {
+            base.Interact(player);
+        }
     }
 }

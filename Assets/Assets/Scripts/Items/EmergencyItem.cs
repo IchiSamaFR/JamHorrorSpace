@@ -20,6 +20,6 @@ public class EmergencyItem : WorldAction
         base.Interact(player);
         LightController.Instance.Show(lightsId);
         sound.SetMultiplier(0.1f);
-        SceneGameManager.Instance.IsEmergency = true;
+        SceneGameManager.Instance.UseEmergency();
     }
 }

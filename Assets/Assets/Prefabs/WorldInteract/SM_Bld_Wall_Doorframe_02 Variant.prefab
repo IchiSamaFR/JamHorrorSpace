@@ -150,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4658243531083341430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1290007, y: -0.059999943, z: 0.274}
+  m_LocalPosition: {x: -1.1290007, y: 0.94000006, z: -0.726}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightModel: {fileID: 3345747919445865332}
-  LinkedGroup: default
+  LinkedGroup: electrical
   MinBeforeBlink: 1
   MaxBeforeBlink: 1
   MinBlinkDuration: 1
@@ -430,7 +430,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.000003, y: 5, z: 0.87106013}
   m_Center: {x: -2.5000014, y: 1.5, z: 0}
---- !u!114 &5028842928101809585
+--- !u!114 &8459418670180786630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -439,10 +439,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6689500808427639651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3e90e57d56d8c94396ba7975133d348, type: 3}
+  m_Script: {fileID: 11500000, guid: 3660f8e9a31d6b94c994756e1ebe0d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Open door (Access card)
+  title: Open door (Electrical)
   panel: {fileID: 3243263920873171535}
   textBox: {fileID: 8014483033614706999}
   itemConsumed: []
@@ -452,3 +452,4 @@ MonoBehaviour:
   audioUse: {fileID: 8300000, guid: ad11d55a41d8d244caf8b363a291d199, type: 3}
   audioUnUse: {fileID: 8300000, guid: 5eb7e77905e308544a230b14c71e1581, type: 3}
   active: 0
+  lightObj: {fileID: 4658243531083341430}
