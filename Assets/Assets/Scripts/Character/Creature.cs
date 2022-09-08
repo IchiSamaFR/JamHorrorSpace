@@ -22,13 +22,11 @@ public class Creature : MonoBehaviour
         Movement();
     }
 
-    void GoTo(Waypoint newPoint) {
-        print(atm.name);
-        print(newPoint.name);
+    void GoTo(Waypoint newPoint)
+    {
         lastWaypoint = atm;
         atm = newPoint;
         animator.SetBool("IsWalking",true);
-        Movement();
     }
 
     void Movement()
@@ -44,20 +42,27 @@ public class Creature : MonoBehaviour
         }
     }
 
-    void ChangeWaypoint() {
-        print("------");
+    void ChangeWaypoint()
+    {
+        int weight = 3;
+        int rdm = Random.Range(0, ((atm.waypoints.Length - 1) * weight) + 1);
+        
         foreach (var item in atm.waypoints)
         {
-            print(item.name);
-        }
-        if(atm.waypoints.Length == 1)
-        {
-            GoTo(atm.waypoints[0]);
-            return;
-        }
-        for (int i = 0; i < atm.waypoints.Length; i++) {
-            int e = Random.Range(0, atm.waypoints.Length);
-            GoTo(atm.waypoints[e]);
+            if(item == lastWaypoint)
+            {
+                rdm -= 1;
+            }
+            else
+            {
+                rdm -= 3;
+            }
+
+            if(rdm <= 0)
+            {
+                GoTo(item);
+                break;
+            }
         }
     }
 }
