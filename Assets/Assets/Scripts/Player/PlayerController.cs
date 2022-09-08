@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool isSneak;
     private bool isFlashActive = true;
     private float shake;
-    private bool canMove = true;
+    private bool canMove = false;
 
     [SerializeField] private GameObject model;
     [SerializeField] private GameObject flashLightModel;
@@ -141,6 +141,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Rotation()
     {
+        if (!canMove) {
+            return;
+        }
         Vector3 mouse = Input.mousePosition;
         Ray castPoint = cam.ScreenPointToRay(mouse);
         RaycastHit hit;
@@ -163,6 +166,9 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyAnimations()
     {
+        if (!canMove) {
+            return;
+        }
         if (Input.GetAxis("Horizontal") > 0)
         {
             animator.SetBool("Right", true);

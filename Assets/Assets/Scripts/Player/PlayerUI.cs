@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject classique;
+    [SerializeField] private GameObject options;
     private bool isOpen;
 
     void Start()
@@ -40,5 +42,15 @@ public class PlayerUI : MonoBehaviour
     public void ExitToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void GoOptions() {
+        classique.SetActive(false);
+        options.SetActive(true);
+    }
+
+    public void BackMenu() {
+        classique.SetActive(true);
+        options.SetActive(false);
     }
 }
