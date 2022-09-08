@@ -112,7 +112,7 @@ MonoBehaviour:
   panel: {fileID: 4037743024005379948}
   textBox: {fileID: 8805587727239443476}
   itemConsumed: []
-  useMultipleTime: 0
+  useMultipleTime: 1
   objectBefore: {fileID: 3614815962618452778}
   objectAppeared: {fileID: 1740163887315072244}
   audioUse: {fileID: 8300000, guid: 87485baa9c831b946bd0ab31c0c782c5, type: 3}
