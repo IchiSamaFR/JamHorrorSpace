@@ -15,14 +15,14 @@ public class Locker : WorldAction
     public override void Interact(Player player) {
         base.Interact(player);
         if (ImIn) {
-            player.GetComponent<PlayerController>().ShowPlayer();
+            player.PlayerController.ShowPlayer();
             player.GetComponent<Rigidbody>().isKinematic = false;
-            player.GetComponent<PlayerController>().ResumeMovement();
+            player.PlayerController.ResumeMovement();
             ImIn = false;
         } else {
-            player.GetComponent<PlayerController>().HidePlayer();
+            player.PlayerController.HidePlayer();
             player.GetComponent<Rigidbody>().isKinematic = true;
-            player.GetComponent<PlayerController>().StopMovement();
+            player.PlayerController.StopMovement();
             ImIn = true;
         }
        

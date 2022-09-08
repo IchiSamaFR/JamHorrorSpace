@@ -43,9 +43,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0.62258625, b: 1, a: 1}
-  m_Intensity: 3
-  m_Range: 1
+  m_Color: {r: 0, g: 0.62352943, b: 1, a: 1}
+  m_Intensity: 5
+  m_Range: 1.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -452,4 +452,3 @@ MonoBehaviour:
   audioUse: {fileID: 8300000, guid: ad11d55a41d8d244caf8b363a291d199, type: 3}
   audioUnUse: {fileID: 8300000, guid: 5eb7e77905e308544a230b14c71e1581, type: 3}
   active: 0
-  lightObj: {fileID: 4658243531083341430}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Cinemachine;
+using System.Collections;
 
 public class CineMachineSwitcher : MonoBehaviour {
 
@@ -8,16 +9,17 @@ public class CineMachineSwitcher : MonoBehaviour {
     [SerializeField] private CinemachineVirtualCamera trakingCamera;
 
     private float wait = 5;
-
-    void Update()
+    private void Start()
     {
-
-        wait -= Time.deltaTime;
-        if (wait <= 0) {
-            trakingCamera.Priority = 0;
-            mainCamera.Priority = 10;
-            player.ResumeMovement();
-        }
+        StartCoroutine("ResumeMovement");
     }
+
+    private IEnumerator ResumeMovement()
+    {
+        yield return new WaitForSeconds(wait);
+        trakingCamera.Priority = 0;
+        mainCamera.Priority = 10;
+        player.ResumeMovement();
+    } 
 
 }

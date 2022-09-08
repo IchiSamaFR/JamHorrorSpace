@@ -44,8 +44,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 0.62352943, b: 1, a: 1}
-  m_Intensity: 3
-  m_Range: 1
+  m_Intensity: 5
+  m_Range: 1.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -182,7 +182,7 @@ Transform:
   - {fileID: 3245938774943282975}
   - {fileID: 6253467349855759894}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -1.243, y: 0, z: 0}
 --- !u!135 &8640474609589636982
 SphereCollider:

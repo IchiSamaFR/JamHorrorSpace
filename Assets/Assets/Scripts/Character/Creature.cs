@@ -14,7 +14,7 @@ public class Creature : MonoBehaviour
     }
 
     void GoTo(Waypoint newPoint) {
-        lastWaypoint = newPoint;
+        lastWaypoint = atm;
         atm = newPoint;
         animator.SetBool("IsWalking",true);
         Movement();

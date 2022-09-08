@@ -35,7 +35,7 @@ Transform:
   - {fileID: 2113210856454928142}
   - {fileID: 7390549246353632775}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2113210855611915073
 MonoBehaviour:
@@ -170,9 +170,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.14725646, b: 0, a: 1}
-  m_Intensity: 3
-  m_Range: 1
+  m_Color: {r: 0, g: 0.62352943, b: 1, a: 1}
+  m_Intensity: 5
+  m_Range: 1.4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
