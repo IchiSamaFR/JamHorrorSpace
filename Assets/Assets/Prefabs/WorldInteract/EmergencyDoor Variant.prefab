@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightModel: {fileID: 8268299336833974998}
   LinkedGroup: electrical
-  MinBeforeBlink: 1
-  MaxBeforeBlink: 1
+  MinBeforeBlink: 0.1
+  MaxBeforeBlink: 0.1
   MinBlinkDuration: 1
   MaxBlinkDuration: 1
   IsEnable: 1
