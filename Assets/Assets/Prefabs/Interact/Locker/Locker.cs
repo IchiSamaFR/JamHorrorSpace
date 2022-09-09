@@ -18,11 +18,13 @@ public class Locker : WorldAction
             player.PlayerController.ShowPlayer();
             player.GetComponent<Rigidbody>().isKinematic = false;
             player.PlayerController.ResumeMovement();
+            player.PlayerController.Hide(false);
             ImIn = false;
         } else {
             player.PlayerController.HidePlayer();
             player.GetComponent<Rigidbody>().isKinematic = true;
             player.PlayerController.StopMovement();
+            player.PlayerController.Hide(true);
             ImIn = true;
         }
        

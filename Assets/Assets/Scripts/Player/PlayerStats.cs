@@ -12,7 +12,7 @@ public class PlayerStats : CharacterStats
     public float MaxVolumeModifier = 0.7f;
 
     [Header("Hostility")]
-    public float TimeToPanic = 3;
+    public float TimeToPanic = 1.4f;
     public float TimeToPanicDown = 6;
     public float ConeRadius = 10;
     public float RangeRadius = 7;

@@ -180,7 +180,7 @@ MonoBehaviour:
   useMultipleTime: 0
   objectBefore: {fileID: 5691539418772072562}
   objectAppeared: {fileID: 4772972433190931716}
-  audioUse: {fileID: 0}
+  audioUse: {fileID: 8300000, guid: 1dff755a5d34cb4499f944af748b98fb, type: 3}
   audioUnUse: {fileID: 0}
   active: 0
 --- !u!135 &4772972433812242251

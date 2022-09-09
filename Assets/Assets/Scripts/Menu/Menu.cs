@@ -56,7 +56,7 @@ public class Menu : MonoBehaviour
     }
 
     IEnumerator LoadSceneAsync(string scene) {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(scene,LoadSceneMode.Single);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
 
         Loader.SetActive(true);
 
@@ -69,6 +69,7 @@ public class Menu : MonoBehaviour
         while (!operation.isDone) {
             float progress = Mathf.Clamp01(operation.progress / 0.9F);
             LoaderBar.value = progress;
+            SoundManager.Instance.UnSubscribeAll();
             yield return null;
         }
     }

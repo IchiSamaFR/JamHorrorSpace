@@ -25,6 +25,7 @@ public class SceneGameManager : MonoBehaviour
     }
     private void Start()
     {
+        Time.timeScale = 1;
         TorchQuest.Show();
     }
 

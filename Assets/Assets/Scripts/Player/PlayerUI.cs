@@ -17,10 +17,12 @@ public class PlayerUI : MonoBehaviour
             Debug.LogError("Menu has not been assigned in PlayerUI.");
         }
         menu.SetActive(false);
+        Cursor.visible = false;
     }
 
     public void Show() {
         isOpen = !isOpen;
+        Cursor.visible = isOpen;
         menu.SetActive(isOpen);
 
         Time.timeScale = isOpen ? 0 : 1;
@@ -34,14 +36,12 @@ public class PlayerUI : MonoBehaviour
         }
     }
     public void Resume() {
-        menu.SetActive(false);
-        Time.timeScale = 1;
-        SoundManager.Instance.Play();
+        Show();
     }
 
     public void ExitToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        GameManager.LoadScene("MainMenu");
     }
 
     public void GoOptions() {

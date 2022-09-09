@@ -97,12 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917f0bc309a25e549b43cb77e28693b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 2.2
+  WalkSpeed: 2.6
   SneakSpeed: 1.4
   RunSpeed: 2.8
   AccelerationTime: 0.15
   InventorySize: 3
-  MaxPitchModifier: 0.5
+  MaxPitchModifier: 0.8
   MaxVolumeModifier: 0.7
   TimeToPanic: 3
   TimeToPanicDown: 6
@@ -121,9 +121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0def740a11db07446b12d2a198b0fc96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creature: {fileID: 0}
   animator: {fileID: 2401473893085088361}
   mainCamera: {fileID: 0}
   shakingCamera: {fileID: 0}
+  IsHide: 0
   model: {fileID: 0}
   flashLightModel: {fileID: 2306194432640736201}
   flashLight: {fileID: 2306194433214304069}
@@ -249,7 +251,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

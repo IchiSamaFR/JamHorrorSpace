@@ -11,6 +11,7 @@ public class TorchItem : MonoBehaviour, IInteractableObject
     [SerializeField] private string title;
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI textBox;
+    [SerializeField] private AudioClip clip;
 
     public bool IsInterractable { get; private set; }
 
@@ -35,6 +36,7 @@ public class TorchItem : MonoBehaviour, IInteractableObject
     {
         player.PlayerController.GetTorch();
         SceneGameManager.Instance.GetTorch();
-        Destroy(gameObject);
+        SoundManager.Instance.InstantiateSound(clip, transform.position).Play();
+        gameObject.SetActive(false);
     }
 }

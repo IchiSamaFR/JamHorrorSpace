@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private Player player;
     private PlayerStats playerStats;
     private Camera cam;
-    private Creature creature;
+    [SerializeField] private Creature creature;
     [SerializeField] private Animator animator;
     [SerializeField] private CinemachineVirtualCamera mainCamera;
     [SerializeField] private CinemachineVirtualCamera shakingCamera;
@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private bool isFlashActive = true;
     private float shake;
     private bool canMove = false;
+
+    public bool IsHide;
 
     [SerializeField] private GameObject model;
     [SerializeField] private GameObject flashLightModel;
@@ -32,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        creature = (GameObject.FindObjectOfType(typeof(Creature)) as Creature);
         player = GetComponent<Player>();
         playerStats = GetComponent<PlayerStats>();
         cam = Camera.main;
@@ -58,6 +59,11 @@ public class PlayerController : MonoBehaviour
         Movement();
     }
 
+    public void Hide(bool hide)
+    {
+        IsHide = hide;
+    }
+
     public void StopMovement() {
         canMove = false;
     }
@@ -74,7 +80,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other) {
         if (other.transform.GetComponentsInChildren<MonoBehaviour>().Any(comp => comp is IInteractableObject)) {
-            selectedInteractableObject.SetInterractable(false);
+            selectedInteractableObject?.SetInterractable(false);
             selectedInteractableObject = null;
         }
     }
@@ -86,7 +92,12 @@ public class PlayerController : MonoBehaviour
         var direction = heading / distance;
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), direction, out hit, playerStats.RangeRadius, creatureRaycast)
+        if (creature.IsChasing)
+        {
+            shakingCamera.Priority = 11;
+            shake = shake >= 1 ? 1 : shake + Time.deltaTime * 10f / playerStats.TimeToPanic;
+        }
+        else if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), direction, out hit, playerStats.RangeRadius, creatureRaycast)
             && hit.transform.GetComponent<Creature>())
         {
             if(hit.distance <= playerStats.RangeInstantRadius)
@@ -112,6 +123,11 @@ public class PlayerController : MonoBehaviour
         {
             shakingCamera.Priority = 9;
             shake = shake < 0 ? 0 : shake - Time.deltaTime * 1 / playerStats.TimeToPanicDown;
+        }
+        else
+        {
+            shakingCamera.Priority = 9;
+            shake = shake = 0;
         }
         player.PlayerSoundController.SetBreathSound(shake);
     }
@@ -161,7 +177,7 @@ public class PlayerController : MonoBehaviour
             distance = heading.magnitude;
             direction = heading / distance;
             flashLight.transform.rotation = Quaternion.LookRotation(
-                new Vector3(direction.x, direction.y, direction.z));
+                new Vector3(direction.x, direction.y + 0.1f, direction.z));
         }
     }
     private void ApplyAnimations()

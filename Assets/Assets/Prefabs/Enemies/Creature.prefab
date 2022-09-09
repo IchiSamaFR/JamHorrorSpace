@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2933108433293780553}
   - component: {fileID: 2933108433293780552}
   - component: {fileID: 2100845123275232750}
+  - component: {fileID: 7949033922121227043}
   m_Layer: 9
   m_Name: Creature
   m_TagString: Untagged
@@ -77,6 +78,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e1f2e12311a674e9d0c1f28491ba50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IA:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  atm: {fileID: 0}
+  animator: {fileID: 3019380711396672347}
+  canMove: 1
+  player: {fileID: 0}
+  uiEnd: {fileID: 0}
+  soundChase: {fileID: 0}
+  navMeshAgent: {fileID: 7949033922121227043}
+  lowRange: 0.5
+  range: 7
+  mask:
+    serializedVersion: 2
+    m_Bits: 511
+  timeChase: 2
+  IsChasing: 0
+--- !u!195 &7949033922121227043
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2933108433293780551}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 2
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 720
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &2933108432196466425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -612,6 +661,11 @@ Transform:
 --- !u!4 &2934933291906703395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4086692576548570, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
+  m_PrefabInstance: {fileID: 2933108432196466425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3019380711396672347 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95279650404758946, guid: f784e1949da3ada41a6d04f0fcc6e70c, type: 3}
   m_PrefabInstance: {fileID: 2933108432196466425}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4442934092825547424

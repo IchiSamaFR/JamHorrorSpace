@@ -7,6 +7,8 @@ public class EndAction : WorldAction
     [SerializeField] GameObject vaisseau;
     [SerializeField] GameObject quest;
     [SerializeField] GameObject uiEnd;
+    [SerializeField] GameObject effect;
+    [SerializeField] AudioClip SFX;
     bool done = false;
     private Player p;
     public override void Interact(Player player)
@@ -24,7 +26,10 @@ public class EndAction : WorldAction
     }
 
     IEnumerator Escape() {
+        effect.SetActive(true);
+        SoundManager.Instance.InstantiateSound(SFX, transform.position).Play();
         yield return new WaitForSeconds(5);
+        Cursor.visible = true;
         uiEnd.SetActive(true);
     }
 

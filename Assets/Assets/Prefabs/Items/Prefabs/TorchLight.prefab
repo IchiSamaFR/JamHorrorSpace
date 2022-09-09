@@ -129,7 +129,7 @@ Transform:
   - {fileID: 1370713058573749912}
   - {fileID: 7549971628040990111}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1370713059244197513
 MonoBehaviour:
@@ -166,6 +166,7 @@ MonoBehaviour:
   title: Torchlight
   panel: {fileID: 7898654222866071839}
   textBox: {fileID: 3433680993424360039}
+  clip: {fileID: 8300000, guid: 1dff755a5d34cb4499f944af748b98fb, type: 3}
 --- !u!135 &1370713059244197527
 SphereCollider:
   m_ObjectHideFlags: 0

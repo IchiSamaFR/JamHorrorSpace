@@ -216,7 +216,7 @@ MonoBehaviour:
   useMultipleTime: 0
   objectBefore: {fileID: 3246343403925761805}
   objectAppeared: {fileID: 3246343404293629370}
-  audioUse: {fileID: 0}
+  audioUse: {fileID: 8300000, guid: 76fc76b87ca658e459f407e1ea46f255, type: 3}
   audioUnUse: {fileID: 0}
   active: 0
   lightsId: electrical

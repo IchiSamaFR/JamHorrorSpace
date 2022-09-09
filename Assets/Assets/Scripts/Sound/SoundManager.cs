@@ -73,6 +73,12 @@ public class SoundManager : MonoBehaviour
                 break;
         }
     }
+
+    public void UnSubscribeAll()
+    {
+        sfxList = new List<Sound>();
+        ambientList = new List<Sound>();
+    }
     public void CreateSFXAudio(AudioClip clip, Vector3 position, float mutliplier = 1)
     {
         Sound sound = InstantiateSound(clip, position);
