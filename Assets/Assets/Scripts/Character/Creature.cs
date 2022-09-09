@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Creature : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class Creature : MonoBehaviour
     private Waypoint lastWaypoint = null;
     [SerializeField] private Waypoint atm;
     [SerializeField] private Animator animator;
+    [SerializeField] private bool canMove = false;
+    [SerializeField] private Player player;
+
+    [SerializeField] private GameObject uiEnd;
 
     private void Awake()
     {
@@ -15,10 +20,17 @@ public class Creature : MonoBehaviour
 
     private void Start()
     {
+        if (!canMove) {
+            return;
+        }
         transform.position = atm.transform.position;
     }
+
     void Update()
     {
+        if (!canMove) {
+            return;
+        }
         Movement();
     }
 
@@ -64,6 +76,37 @@ public class Creature : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.transform.GetComponent<Player>()) {
+            RushToPlayer();
+        }
+    }
+
+    // Méthode quand la créature trouve le player alors elle rush vers elle
+    private void RushToPlayer() {
+
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.transform.GetComponent<Player>()) {
+            BackToNearestWaypoint();
+        }
+    }
+
+    // Méthode quand la créature perd le player alors elle reprendre son trajet clasique
+    private void BackToNearestWaypoint() {
+
+    }
+
+    // Méthode quand tu rentre dans la range trop proche de la créature
+    public void YouDie() {
+        uiEnd.SetActive(true);
+    }
+
+    public void YouDieBackToMenu() {
+        SceneManager.LoadScene("MainMenu");
     }
 }
 
