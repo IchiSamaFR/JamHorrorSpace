@@ -229,8 +229,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
         moveDirection = new Vector3();
-        moveDirection += new Vector3(transform.right.x, 0, transform.right.z) * Input.GetAxis("Horizontal");
-        moveDirection += new Vector3(transform.forward.x, 0, transform.forward.z) * Input.GetAxis("Vertical");
+        moveDirection += new Vector3(-0.5f, 0, 0.5f) * Input.GetAxis("Vertical");
+        moveDirection += new Vector3(0.5f, 0, 0.5f) * Input.GetAxis("Horizontal");
 
         if (moveDirection != new Vector3())
         {

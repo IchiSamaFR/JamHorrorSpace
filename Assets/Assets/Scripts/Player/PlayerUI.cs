@@ -17,12 +17,10 @@ public class PlayerUI : MonoBehaviour
             Debug.LogError("Menu has not been assigned in PlayerUI.");
         }
         menu.SetActive(false);
-        Cursor.visible = false;
     }
 
     public void Show() {
         isOpen = !isOpen;
-        Cursor.visible = isOpen;
         menu.SetActive(isOpen);
 
         Time.timeScale = isOpen ? 0 : 1;

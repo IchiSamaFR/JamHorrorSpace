@@ -109,7 +109,6 @@ public class Creature : MonoBehaviour
 
     void ChangeWaypoint()
     {
-        int weight = 5;
         int rdm = Random.Range(0, IA.Length);
 
         GoTo(IA[rdm]);

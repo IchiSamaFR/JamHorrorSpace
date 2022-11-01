@@ -83,7 +83,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6702752846127602673}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!108 &2352007092887205241
 Light:
@@ -99,7 +99,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 3
   m_Range: 5
-  m_SpotAngle: 70
+  m_SpotAngle: 90
   m_InnerSpotAngle: 7
   m_CookieSize: 10
   m_Shadows:

@@ -29,7 +29,6 @@ public class EndAction : WorldAction
         effect.SetActive(true);
         SoundManager.Instance.InstantiateSound(SFX, transform.position).Play();
         yield return new WaitForSeconds(5);
-        Cursor.visible = true;
         uiEnd.SetActive(true);
     }
 
